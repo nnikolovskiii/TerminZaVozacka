@@ -1,0 +1,23 @@
+﻿@model TerminZaVozacka.Models.ATypePrijava
+
+@{
+    ViewBag.Title = "ADetails";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>ADetails</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PrethodnaVozackaId)
+        </dt>
+        
+        <dd>
+            <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.PrethodnaVozackaId})" alt="" height=100 width=200 />
+        </dd>
+
+        
+    </dl>
+</div>
+

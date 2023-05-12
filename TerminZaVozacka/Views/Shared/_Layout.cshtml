@@ -1,0 +1,118 @@
+﻿<!-- Navigation -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Main.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui-timepicker-addon.min.css" rel="stylesheet" />
+    <!-- Syncfusion ASP.NET MVC controls styles -->
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.3.47/fluent.css" />
+    <!-- Syncfusion ASP.NET MVC controls scripts -->
+    <script src="https://cdn.syncfusion.com/ej2/20.3.47/dist/ej2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/SideBar/css/style.css">
+
+    <style>
+        .container {
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .navbar {
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div id="lol" class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://placeholder.pics/svg/150x50/888888/EEE/Logo" alt="..." height="36">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Prijavi", "Index", "Admin", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("AddRole", "AddToRole", "Account", null, new { @class = "nav-link" })</li>
+                    }
+
+                    @if (this.User.IsInRole("Employee"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Accepted", "Accepted", "Employee", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Not Accepted", "NotAccepted", "Employee", null, new { @class = "nav-link" })</li>
+                    }
+
+                    @if (this.User.IsInRole("User"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Prijavi", "Index", "Prijavas", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Accepted", "Accepted", "Prijavas", null, new { @class = "nav-link" })</li>
+                    }
+                    <li class="nav-item">@Html.ActionLink("Categories", "Index", "Categories", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Locations", "Index", "Locations", null, new { @class = "nav-link" })</li>
+
+                    @Html.Partial("_LoginPartial")
+
+                    @*<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-timepicker-addon.js"></script>
+    <script src="~/Scripts/site.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/SideBar/js/jquery.min.js"></script>
+    <script src="~/SideBar/js/popper.js"></script>
+    <script src="~/SideBar/js/bootstrap.min.js"></script>
+    <script src="~/SideBar/js/main.js"></script>
+    <!-- Syncfusion ASP.NET MVC Script Manager -->
+</body>
+<!-- Page Content -->
+<div class="container">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+
+</div>
+
+
+
+    

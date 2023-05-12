@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @model TerminZaVozacka.Models.Prijava
+
+    @{
+        ViewBag.Title = "Details";
+    }
+
+    <h2>Details</h2>
+
+    @using (Html.BeginForm("Details", "Employee"))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <h4>Prijava</h4>
+            <hr />
+
+
+
+            @Html.HiddenFor(model => model.Id, new { obj = Model.Id })
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dt>
+                @Html.DisplayFor(model => model.Name)
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Surname)
+            </dt>
+
+            <dt>
+                @Html.DisplayFor(model => model.Surname)
+            </dt>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+                @Html.HiddenFor(model => model.UserName, new { obj = Model.UserName })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Type)
+                @Html.HiddenFor(model => model.Type, new { obj = Model.Type })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+                @Html.HiddenFor(model => model.Category, new { obj = Model.Category })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IdentificationNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IdentificationNumber)
+                @Html.HiddenFor(model => model.IdentificationNumber, new { obj = Model.IdentificationNumber })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsAccepted)
+            </dt>
+
+            <dd>
+                @Html.CheckBoxFor(model => model.IsAccepted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.DateTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Time)
+            </dt>
+
+            <dd>
+                @Html.EditorFor(model => model.Time)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LicnaKartaId)
+            </dt>
+
+            <dd>
+                <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.LicnaKartaId})" alt="" height=100 width=200 />
+                @Html.HiddenFor(model => model.LicnaKartaId, new { obj = Model.LicnaKartaId })
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Uplatnica)
+            </dt>
+
+            <dd>
+                <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.Uplatnica})" alt="" height=100 width=200 />
+                @Html.HiddenFor(model => model.Uplatnica, new { obj = Model.Uplatnica })
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Obrazovanie)
+            </dt>
+
+            <dd>
+                <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.Obrazovanie})" alt="" height=100 width=200 />
+                @Html.HiddenFor(model => model.Obrazovanie, new { obj = Model.Obrazovanie })
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PotvrdaZaCasovi)
+            </dt>
+
+            <dd>
+                <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.PotvrdaZaCasovi})" alt="" height=100 width=200 />
+                @Html.HiddenFor(model => model.PotvrdaZaCasovi, new { obj = Model.PotvrdaZaCasovi })
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Zdravstveno)
+            </dt>
+
+            <dd>
+                <img src="@Url.Action("RetrieveImage", "Employee", new {id = Model.Zdravstveno})" alt="" height=100 width=200 />
+                @Html.HiddenFor(model => model.Zdravstveno, new { obj = Model.Zdravstveno })
+
+            </dd>
+
+            <dd>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </dd>
+
+        </dl>
+        </div>
+    }
+
+
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

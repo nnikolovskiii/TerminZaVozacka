@@ -1,0 +1,38 @@
+﻿@model TerminZaVozacka.Models.BTypePrijava
+
+@using (Html.BeginForm("CheckSelectTypeB", "Prijavas")) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>BTypeDecorator</h4>
+
+  
+
+    @Html.HiddenFor(m => m.Id);
+    @Html.HiddenFor(m => m.IdentificationNumber);
+    @Html.HiddenFor(m => m.IsAccepted);
+    @Html.HiddenFor(m => m.Type);
+    @Html.HiddenFor(m => m.UserName);
+    @Html.HiddenFor(m => m.Name);
+    @Html.HiddenFor(m => m.Surname);
+    @Html.HiddenFor(m => m.LicnaKartaId)
+    @Html.HiddenFor(m => m.DateTime)
+    @Html.HiddenFor(m => m.Time)
+    @Html.HiddenFor(m => m.Obrazovanie)
+    @Html.HiddenFor(m => m.Zdravstveno)
+    @Html.HiddenFor(m => m.PotvrdaZaCasovi)
+    @Html.HiddenFor(m => m.Uplatnica)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

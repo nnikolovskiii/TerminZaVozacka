@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TerminZaVozacka.Models.Location>
+
+
+
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <iframe src=@item.Link width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </td>
+         
+        </tr>
+}

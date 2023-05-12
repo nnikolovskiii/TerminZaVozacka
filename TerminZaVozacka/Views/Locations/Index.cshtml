@@ -1,0 +1,52 @@
+﻿@model TerminZaVozacka.Models.LocationDropDownModel
+
+
+<div>
+    @using (Ajax.BeginForm("SelectLocation", "Locations", new AjaxOptions
+    { HttpMethod = "POST", UpdateTargetId = "dd" }, new { id = "form" }))
+    {
+        @Html.DropDownListFor(model => model.SelectedCity, new SelectList(Model.Cities));
+        @Html.DropDownListFor(model => model.SelectedType, new SelectList(Model.Types));
+        <input type="submit" />
+    }
+</div>
+
+
+
+
+
+  
+    <table class="table">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Link
+            </th>
+            <th></th>
+        </tr>
+
+
+        <div id="dd">
+            @foreach (var item in Model.Locations)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <iframe src=@item.Link width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </td>
+       
+            </tr>
+        }
+            </div>
+        </table>
+
+
+@section Scripts{
+     <script src="~/Scripts/jquery-3.4.1.js"></script>
+      <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+}

@@ -1,0 +1,122 @@
+﻿@model TerminZaVozacka.Models.PrijavaTypeModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+
+@Html.AntiForgeryToken()
+
+<div>
+    @using (Ajax.BeginForm("Valid", "Prijavas", new AjaxOptions
+    { HttpMethod = "POST", UpdateTargetId = "dd" }, new { id = "form", enctype = "multipart/form-data" }))
+    {
+        <div class="form-horizontal">
+            <h4>Prijava</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prijava.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prijava.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prijava.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prijava.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prijava.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prijava.Surname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prijava.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prijava.Type, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prijava.Type, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Prijava.IdentificationNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Prijava.IdentificationNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Prijava.IdentificationNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LicnaKarta, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="LicnaKarta" />
+                    @Html.ValidationMessageFor(model => model.LicnaKarta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Zdravstveno, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="Zdravstveno" />
+                    @Html.ValidationMessageFor(model => model.LicnaKarta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Obrazovanie, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="Obrazovanie" />
+                    @Html.ValidationMessageFor(model => model.LicnaKarta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PotvrdaZaCasovi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="PotvrdaZaCasovi" />
+                    @Html.ValidationMessageFor(model => model.LicnaKarta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Uplatnica, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="Uplatnica" />
+                    @Html.ValidationMessageFor(model => model.LicnaKarta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @Html.HiddenFor(model => model.Prijava.UserName, new { @Value = User.Identity.Name })
+            @Html.HiddenFor(model => model.Prijava.IsAccepted, new { @Value = false });
+            @Html.HiddenFor(model => model.Prijava.DateTime, new { @Value = DateTime.Now })
+            @Html.HiddenFor(model => model.Prijava.CreationTime, new { @Value = DateTime.Now })
+            @Html.HiddenFor(model => model.Prijava.Time, new { @Value = new TimeSpan() });
+            @Html.HiddenFor(model => model.Prijava.Category, new { @Value = "Praksa" })
+            @Html.HiddenFor(model => model.Types, new { @Value = Model.Types })
+            @Html.HiddenFor(model => model.Prijava.Id, new { @Value = 0 })
+            @Html.DropDownListFor(m => m.SelectedItem, new SelectList(Model.Types))
+
+            <input type="submit" />
+
+
+
+        </div>
+
+            }
+        
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<div id="dd">
+
+</div>

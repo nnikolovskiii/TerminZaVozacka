@@ -1,0 +1,43 @@
+﻿@model TerminZaVozacka.Models.ATypePrijava
+
+@using (Html.BeginForm("CheckSelectTypeA", "Prijavas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>ATypeDecorator</h4>
+    <hr />
+    @Html.HiddenFor(m => m.Id);
+    @Html.HiddenFor(m => m.IdentificationNumber);
+    @Html.HiddenFor(m => m.IsAccepted);
+    @Html.HiddenFor(m => m.Type);
+    @Html.HiddenFor(m => m.UserName);
+    @Html.HiddenFor(m => m.Name);
+    @Html.HiddenFor(m => m.Surname);
+    @Html.HiddenFor(m => m.LicnaKartaId)
+    @Html.HiddenFor(m => m.DateTime)
+    @Html.HiddenFor(m => m.Time)
+    @Html.HiddenFor(m => m.Obrazovanie)
+    @Html.HiddenFor(m => m.Zdravstveno)
+    @Html.HiddenFor(m => m.PotvrdaZaCasovi)
+    @Html.HiddenFor(m => m.Uplatnica)
+    @Html.HiddenFor(m => m.Category)
+    @Html.HiddenFor(m => m.CreationTime)
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrethodnaVozackaId, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" name="PrethodnaVozacka" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
